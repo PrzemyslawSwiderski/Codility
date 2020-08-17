@@ -1,27 +1,27 @@
 public class MinAvgTwoSlice {
 
-  public static int solution(int[] A) {
-    int startIndex = 0;
+    public static int solution(int[] A) {
+        int startIndex = 0;
 
-    if (A.length < 2) {
-      return -1;
-    }
-
-    double minSliceSize = Integer.MAX_VALUE;
-    for (int i = 0; i < A.length - 1; i++) {
-      double sliceSize = (A[i] + A[i + 1]) / 2.0;
-      if (sliceSize < minSliceSize) {
-        minSliceSize = sliceSize;
-        startIndex = i;
-      }
-      if (i + 2 < A.length) {
-        sliceSize = (A[i] + A[i + 1] + A[i + 2]) / 3.0;
-        if (sliceSize < minSliceSize) {
-          minSliceSize = sliceSize;
-          startIndex = i;
+        if (A.length < 2) {
+            return -1;
         }
-      }
+
+        double minSliceSize = Integer.MAX_VALUE;
+        for (int i = 0; i < A.length - 1; i++) {
+            double sliceSize = (A[i] + A[i + 1]) / 2.0;
+            if (sliceSize < minSliceSize) {
+                minSliceSize = sliceSize;
+                startIndex = i;
+            }
+            if (i + 2 < A.length) {
+                sliceSize = (A[i] + A[i + 1] + A[i + 2]) / 3.0;
+                if (sliceSize < minSliceSize) {
+                    minSliceSize = sliceSize;
+                    startIndex = i;
+                }
+            }
+        }
+        return startIndex;
     }
-    return startIndex;
-  }
 }
