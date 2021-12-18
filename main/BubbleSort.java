@@ -1,23 +1,32 @@
-public class BubbleSort {
+public class BubbleSort implements Sorter {
 
-    private void swap(int[] list, int i, int j) {
-        int tmp = list[i];
-        list[i] = list[j];
-        list[j] = tmp;
+    int compareCount = 0;
+
+    @Override
+    public void sort(int[] inputArray) {
+        solution(inputArray);
+    }
+
+    @Override
+    public int getCompareCount() {
+        return compareCount;
+    }
+
+    @Override
+    public String sortingName() {
+        return "Bubble sort";
     }
 
     public int[] solution(int[] list) {
-        int counter = 0;
         for (int j = 0; j < list.length; j++) {
             for (int i = 0; i < list.length - j - 1; i++) {
+                compareCount++;
                 if (list[i] > list[i + 1]) {
                     swap(list, i, i + 1);
                 }
-                counter++;
             }
 
         }
-        System.out.println("counter = " + counter);
         return list;
     }
 
