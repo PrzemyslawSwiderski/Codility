@@ -3,7 +3,7 @@ import java.util.Arrays;
 public class QuickSortTest {
 
     public static void main(String[] args) {
-        Sorter quickSorter = new QuickSorter();
+        Sorter quickSorter = new QuickSorter1();
         int[] arr = new int[]{2, 3, 1, 1, 5, 1, 6, 7};
 
         quickSorter.sort(arr);
