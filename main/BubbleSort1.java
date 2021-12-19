@@ -1,6 +1,4 @@
-public class BubbleSort implements Sorter {
-
-    int compareCount = 0;
+public class BubbleSort1 extends Sorter {
 
     @Override
     public void sort(int[] inputArray) {
@@ -8,19 +6,14 @@ public class BubbleSort implements Sorter {
     }
 
     @Override
-    public int getCompareCount() {
-        return compareCount;
-    }
-
-    @Override
     public String sortingName() {
-        return "Bubble sort";
+        return "Bubble sort 1";
     }
 
     public int[] solution(int[] list) {
         for (int j = 0; j < list.length; j++) {
             for (int i = 0; i < list.length - j - 1; i++) {
-                compareCount++;
+                incCallsCount();
                 if (list[i] > list[i + 1]) {
                     swap(list, i, i + 1);
                 }

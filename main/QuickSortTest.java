@@ -8,6 +8,6 @@ public class QuickSortTest {
 
         quickSorter.sort(arr);
         System.out.println(Arrays.toString(arr));
-        System.out.println("Comparisons: " + quickSorter.getCompareCount());
+        System.out.println("Comparisons: " + quickSorter.getCallsCount());
     }
 }

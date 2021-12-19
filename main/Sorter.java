@@ -1,12 +1,31 @@
-public interface Sorter {
+public abstract class Sorter {
 
-    void sort(int[] inputArray);
+    private int callsCount = 0;
+    private int swapCount = 0;
 
-    int getCompareCount();
+    abstract void sort(int[] inputArray);
 
-    String sortingName();
+    void incCallsCount() {
+        callsCount++;
+    }
 
-    default void swap(int[] inputArray, int aIdx, int bIdx) {
+    void reset() {
+        callsCount = 0;
+        swapCount = 0;
+    }
+
+    int getCallsCount() {
+        return callsCount;
+    }
+
+    int getSwapCount() {
+        return swapCount;
+    }
+
+    abstract String sortingName();
+
+    void swap(int[] inputArray, int aIdx, int bIdx) {
+        swapCount++;
         if (aIdx == bIdx) return;
         inputArray[aIdx] ^= inputArray[bIdx];
         inputArray[bIdx] ^= inputArray[aIdx];

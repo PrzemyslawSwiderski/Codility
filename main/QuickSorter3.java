@@ -1,6 +1,4 @@
-public class QuickSorter3 implements Sorter {
-
-    private int compareCount = 0;
+public class QuickSorter3 extends Sorter {
 
     private void quickSort(int[] ints, int startIdx, int endIdx) {
         if (startIdx >= endIdx) return;
@@ -10,7 +8,7 @@ public class QuickSorter3 implements Sorter {
         int lessIdx = startIdx;
 
         for (int i = startIdx + 1; i <= endIdx; i++) {
-            compareCount++;
+            incCallsCount();
             if (ints[i] < pivot) {
                 lessIdx++;
                 swap(ints, lessIdx, i);
@@ -24,11 +22,6 @@ public class QuickSorter3 implements Sorter {
 
     public void sort(int[] inputArray) {
         quickSort(inputArray, 0, inputArray.length - 1);
-    }
-
-    @Override
-    public int getCompareCount() {
-        return compareCount;
     }
 
     @Override

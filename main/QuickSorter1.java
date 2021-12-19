@@ -1,12 +1,10 @@
-public class QuickSorter1 implements Sorter {
-
-    private int compareCount = 0;
+public class QuickSorter1 extends Sorter {
 
     private int partition(int[] inputArray, int begin, int end) {
         int pivot = inputArray[begin];
         int lastLessIndex = begin;
         for (int i = begin + 1; i <= end; i++) {
-            compareCount++;
+            incCallsCount();
             if (pivot > inputArray[i]) {
                 lastLessIndex++;
                 swap(inputArray, i, lastLessIndex);
@@ -25,14 +23,8 @@ public class QuickSorter1 implements Sorter {
         }
     }
 
-
     public void sort(int[] inputArray) {
         quickSort(inputArray, 0, inputArray.length - 1);
-    }
-
-    @Override
-    public int getCompareCount() {
-        return compareCount;
     }
 
     @Override

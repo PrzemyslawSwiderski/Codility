@@ -1,15 +1,8 @@
 // Implementation from Cracking Coding Interview book
-public class QuickSorter2 implements Sorter {
-
-    private int compareCount = 0;
+public class QuickSorter2 extends Sorter {
 
     public void sort(int[] inputArray) {
         quickSort(inputArray, 0, inputArray.length - 1);
-    }
-
-    @Override
-    public int getCompareCount() {
-        return compareCount;
     }
 
     @Override
@@ -30,14 +23,15 @@ public class QuickSorter2 implements Sorter {
 
     int partitionAlt(int[] arr, int left, int right) {
         int pivot = arr[(left + right) / 2];
-        while (left <= right) {
+        while (left < right) {
+            incCallsCount();
             while (arr[left] < pivot) {
-                compareCount++;
+                incCallsCount();
                 left++;
             }
 
             while (arr[right] > pivot) {
-                compareCount++;
+                incCallsCount();
                 right--;
             }
 
