@@ -13,7 +13,8 @@ public class SortingBenchmarkTest {
                 new QuickSorter1(),
                 new QuickSorter2(),
                 new QuickSorter3(),
-                new MergeSorter()
+                new MergeSorter(),
+                new MergeSorter2()
         );
 
         int[][] testCases = new int[][]{
