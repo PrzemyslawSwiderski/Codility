@@ -33,6 +33,27 @@ public class MinSubset {
         return maxSize;
     }
 
+    public static int nonDivisibleSubsetOptimized(int k, List<Integer> s) {
+        // Write your code here
+        int[] frequencies = new int[k];
+        for (Integer integer : s) {
+            frequencies[integer % k] += 1;
+        }
+        int count = 0;
+        if (frequencies[0] > 0) {
+            count = 1;
+        }
+
+        if (k % 2 == 0 && frequencies[k / 2] > 0) {
+            count += 1;
+        }
+
+        for (int i = 1, j = k - 1; i < j; i++, j--) {
+            count += Math.max(frequencies[i], frequencies[j]);
+        }
+        return count;
+    }
+
     public static boolean isDivisible(int k, List<Integer> s) {
         for (int i = 0; i < s.size() - 1; i++) {
             for (int j = i + 1; j < s.size(); j++) {
