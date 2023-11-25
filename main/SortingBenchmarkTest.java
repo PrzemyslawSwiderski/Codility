@@ -16,7 +16,6 @@ public class SortingBenchmarkTest {
                 new MergeSorter(),
                 new MergeSorter2()
         );
-
         int[][] testCases = new int[][]{
                 {1, 1, 1, 1, 1},
                 {9, 8, 7, 6, 5, 4, 3},

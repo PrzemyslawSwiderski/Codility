@@ -1,4 +1,7 @@
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 public class MergeSorted {
 
@@ -27,12 +30,12 @@ public class MergeSorted {
             output.add(inputArray1.get(i));
             i++;
         }
-
         while (j < inputArray2.size()) {
             output.add(inputArray2.get(j));
             j++;
         }
-
+//        Collections.sort(output,Comparator.reverseOrder());
+        List<Integer> rr = new ArrayList<>(output);
         System.out.println("Merged set: " + output);
     }
 

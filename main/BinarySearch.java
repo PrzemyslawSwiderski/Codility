@@ -43,14 +43,14 @@ public class BinarySearch {
             }
 
         }
+
         System.out.println("Iterations count: " + iterations);
         return idx;
     }
 
     public static void main(String[] args) {
-
-        int[] testArray1 = new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9};
-        int element = 9;
+        int[] testArray1 = new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+        int element = 10;
         int res1 = binarySearch(testArray1, element);
         System.out.println("Element idx is: " + res1);
 

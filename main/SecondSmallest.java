@@ -1,16 +1,16 @@
 public class SecondSmallest {
     private static int findSecondSmallest(int[] testArray) {
-        if (testArray.length < 2) return -1;
         int min = Integer.MAX_VALUE;
-        int secondMin = min;
+        int secondMin = Integer.MAX_VALUE;
 
-        for (int value : testArray) {
-            if (value < min) {
+        for (int j : testArray) {
+            if (j < min) {
                 secondMin = min;
-                min = value;
-            } else if (value < secondMin) {
-                secondMin = value;
+                min = j;
             }
+//            } else if (j < secondMin) {
+//                secondMin = j;
+//            }
         }
 
         return secondMin;
@@ -27,12 +27,17 @@ public class SecondSmallest {
         int[] testArray2 = new int[]{0};
 
         int res2 = findSecondSmallest(testArray2);
-        Utils.assertEquals(res2, -1);
+        Utils.assertEquals(res2, Integer.MAX_VALUE);
 
-        int[] testArray3 = new int[]{0,1,2,-1,5};
+        int[] testArray3 = new int[]{0, 1, 2, -1, 5};
 
         int res3 = findSecondSmallest(testArray3);
         Utils.assertEquals(res3, 0);
+
+        int[] testArray4 = new int[]{5, 5};
+
+        int res4 = findSecondSmallest(testArray4);
+        Utils.assertEquals(res4, 5);
     }
 
 }
