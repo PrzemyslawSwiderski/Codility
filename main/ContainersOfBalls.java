@@ -1,56 +1,23 @@
+import java.util.Arrays;
 import java.util.List;
 
 public class ContainersOfBalls {
 
-
-    private static boolean isPossible(int[][] containersArray) {
-        if (containersArray.length == 0) return true;
-        for (int currentContainer = 0; currentContainer < containersArray[0].length; currentContainer++) {
-            for (int typesColumn = 0; typesColumn < containersArray.length; typesColumn++) {
-                if (typesColumn != currentContainer && containersArray[currentContainer][typesColumn] != 0) {
-                    return false;
-                }
-            }
-        }
-        return true;
-    }
-
     public static String organizingContainers(List<List<Integer>> container) {
         int[][] containersArray = container.stream().map(x -> x.stream().mapToInt(i -> i).toArray()).toArray(int[][]::new);
         // Write your code here
-
-
-        while (true) {
-            boolean changed = false;
-
-            for (int i = 0; i < containersArray.length; i++) {
-                for (int j = 0; j < containersArray[i].length; j++) {
-                    if (i != j) {
-                        int currentTypeCount = containersArray[i][i];
-                        int currentOtherTypeCount = containersArray[i][j];
-
-                        int oppositeTypeCount = containersArray[j][j];
-                        int oppositeOtherTypeCount = containersArray[j][i];
-
-                        while (currentOtherTypeCount > 0 && oppositeOtherTypeCount > 0) {
-                            currentTypeCount++;
-                            currentOtherTypeCount--;
-                            oppositeOtherTypeCount--;
-                            oppositeTypeCount++;
-                            changed = true;
-                        }
-                        containersArray[i][i] = currentTypeCount;
-                        containersArray[i][j] = currentOtherTypeCount;
-                        containersArray[j][j] = oppositeTypeCount;
-                        containersArray[j][i] = oppositeOtherTypeCount;
-                    }
-                }
+        int[] containerSums = new int[containersArray.length];
+        int[] ballTypeSums = new int[containersArray.length];
+        for (int i = 0; i < containersArray.length; i++) {
+            for (int j = 0; j < containersArray.length; j++) {
+                containerSums[i] = containerSums[i] + containersArray[i][j];
+                ballTypeSums[i] = ballTypeSums[i] + containersArray[j][i];
             }
-
-            if (!changed) break;
         }
+        Arrays.sort(containerSums);
+        Arrays.sort(ballTypeSums);
 
-        return isPossible(containersArray) ? "Possible" : "Impossible";
+        return Arrays.equals(containerSums, ballTypeSums) ? "Possible" : "Impossible";
     }
 
     public static void main(String[] args) {
