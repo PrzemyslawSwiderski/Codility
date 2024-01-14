@@ -1,9 +1,21 @@
+import java.util.Arrays;
+
+import static java.lang.System.out;
+
 public class BiggerGreater {
 
 
     public static String biggerIsGreater(String w) {
         // Write your code here
         char[] chars = w.toCharArray();
+        int iters = 1;
+
+        do {
+            out.println("----------------------------------");
+            out.println("Iteration: " + iters);
+            out.println("INIT: " + Arrays.toString(chars));
+            iters++;
+        } while (nextPermutation(chars));
 
         if (nextPermutation(chars)) {
             return new String(chars);
@@ -19,23 +31,31 @@ public class BiggerGreater {
         while (i > 0 && array[i - 1] >= array[i])
             i--;
         // Now i is the head index of the suffix
+        out.println("longest non-increasing suffix head Idx: " + i + " value: " + array[i]);
 
         // Are we at the last permutation already?
         if (i <= 0)
             return false;
 
         // Let array[i - 1] be the pivot
+        int pivotIdx = i - 1;
+        out.println("Pivot (before head) Idx: " + pivotIdx + " value: " + array[pivotIdx]);
+
         // Find rightmost element greater than the pivot
         int j = array.length - 1;
-        while (array[j] <= array[i - 1])
+        while (array[j] <= array[pivotIdx])
             j--;
         // Now the value array[j] will become the new pivot
         // Assertion: j >= i
+        out.println("right most elem (greater than pivot) Idx: " + j + " value: " + array[j]);
+
 
         // Swap the pivot with j
-        char temp = array[i - 1];
-        array[i - 1] = array[j];
+        char temp = array[pivotIdx];
+        array[pivotIdx] = array[j];
         array[j] = temp;
+
+        out.println("AFTER rightMostElem and pivot swap: " + Arrays.toString(array));
 
         // Reverse the suffix
         j = array.length - 1;
@@ -47,6 +67,8 @@ public class BiggerGreater {
             j--;
         }
 
+        out.println("AFTER suffix reversing: " + Arrays.toString(array));
+
         // Successfully computed the next permutation
         return true;
     }
@@ -55,11 +77,13 @@ public class BiggerGreater {
 
 //        var test = "ba";
 //        var test = "dcba";
-        var test = "fedcbabcd";
+//        var test = "fedcbabcd";
+//        var test = "abcdef";
+        var test = "abcd";
 
         String result = biggerIsGreater(test);
 
-        System.out.println("Result: " + result);
+        out.println("Result: " + result);
 
     }
 }
